@@ -1,6 +1,5 @@
 import "./style.css";
 import Task from "../task/Task";
-
 import { IMainProps } from "../main/Main";
 
 interface TasksProps {
