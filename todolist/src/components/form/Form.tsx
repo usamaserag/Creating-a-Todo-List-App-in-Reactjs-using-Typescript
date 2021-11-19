@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, ChangeEvent, FormEvent } from "react";
 import "./style.css";
 import { IMainProps } from "../main/Main";
 
@@ -10,11 +10,11 @@ interface IFormProps {
 const Form = ({ tasks, setTasks }: IFormProps) => {
   const [input, setInput] = useState<string>("");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     setInput(e.target.value);
   };
 
-  const handleAddTask = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleAddTask = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     setTasks([
       { id: Math.random() * 10, text: input, completed: false },

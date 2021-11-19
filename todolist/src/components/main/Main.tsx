@@ -15,7 +15,7 @@ const Main = () => {
   return (
     <div>
       <Form tasks={tasks} setTasks={setTasks} />
-      <TasksList tasks={tasks} />
+      <TasksList tasks={tasks} setTasks={setTasks} />
     </div>
   );
 };
