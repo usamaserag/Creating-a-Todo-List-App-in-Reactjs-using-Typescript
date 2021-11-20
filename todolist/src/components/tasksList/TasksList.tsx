@@ -15,7 +15,6 @@ const TasksList = ({ tasks, setTasks }: TasksProps) => {
             <Task
               title={task.text}
               key={index}
-              index={index}
               task={task}
               tasks={tasks}
               setTasks={setTasks}
