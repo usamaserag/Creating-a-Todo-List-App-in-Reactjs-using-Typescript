@@ -15,6 +15,15 @@ const Main = () => {
   const [filteredTasks, setFilteredTasks] = useState<IMainProps[]>([]);
   const [tasksToShow, setTasksToShow] = useState<string>("all");
 
+  useEffect(() => {
+    if (localStorage.getItem("items") !== null) {
+      const tasksInLocalStorage = JSON.parse(
+        localStorage.getItem("items") || ""
+      );
+      setTasks(tasksInLocalStorage);
+    }
+  }, []);
+
   const handleTasksToShow = (e: ChangeEvent<HTMLInputElement>): void => {
     setTasksToShow(e.target.value);
   };
@@ -24,12 +33,13 @@ const Main = () => {
       if (tasksToShow === "all") {
         setFilteredTasks(tasks);
       } else if (tasksToShow === "completed") {
-        setFilteredTasks(tasks.filter((task) => task.completed === true));
+        setFilteredTasks(tasks.filter((task) => task.completed));
       } else if (tasksToShow === "active") {
-        setFilteredTasks(tasks.filter((task) => task.completed === false));
+        setFilteredTasks(tasks.filter((task) => !task.completed));
       }
     };
     handleFilteredTasks();
+    localStorage.setItem("items", JSON.stringify(tasks));
   }, [tasks, tasksToShow]);
 
   return (
