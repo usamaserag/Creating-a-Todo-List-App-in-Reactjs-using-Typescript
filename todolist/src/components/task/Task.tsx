@@ -1,13 +1,13 @@
 import { FaTrash, FaEdit } from "react-icons/fa";
 import "./style.css";
 import { IMainProps } from "../main/Main";
-import { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent, SetStateAction, Dispatch } from "react";
 
 interface TaskProps {
   title: string;
   task: IMainProps;
   tasks: IMainProps[];
-  setTasks: React.Dispatch<React.SetStateAction<IMainProps[]>>;
+  setTasks: Dispatch<SetStateAction<IMainProps[]>>;
 }
 
 const Task = ({ title, task, tasks, setTasks }: TaskProps) => {
@@ -71,7 +71,7 @@ const Task = ({ title, task, tasks, setTasks }: TaskProps) => {
       ) : (
         <ul>
           <li className={`${task.completed ? "completed" : ""}`}>
-            <input type="checkbox" onChange={handleCompleted} />
+            <input type="checkbox" onChange={handleCompleted} checked={task.completed} />
             {title}
             <button onClick={handleEdit}>
               <FaEdit />

@@ -4,21 +4,22 @@ import { IMainProps } from "../main/Main";
 
 interface TasksProps {
   tasks: IMainProps[];
+  filteredTasks: IMainProps[];
   setTasks: React.Dispatch<React.SetStateAction<IMainProps[]>>;
 }
-const TasksList = ({ tasks, setTasks }: TasksProps) => {
+const TasksList = ({ tasks, setTasks, filteredTasks }: TasksProps) => {
   return (
     <div>
-      {tasks.length > 0 ? (
-        tasks.map((task, index) => {
+      {filteredTasks.length > 0 ? (
+        filteredTasks.map((task, index) => {
           return (
             <Task
               title={task.text}
               key={index}
               task={task}
-              tasks={tasks}
               setTasks={setTasks}
-            />
+              tasks={tasks}
+              />
           );
         })
       ) : (
