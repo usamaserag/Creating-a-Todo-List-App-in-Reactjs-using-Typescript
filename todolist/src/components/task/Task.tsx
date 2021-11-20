@@ -8,10 +8,9 @@ interface TaskProps {
   task: IMainProps;
   tasks: IMainProps[];
   setTasks: React.Dispatch<React.SetStateAction<IMainProps[]>>;
-  index: number;
 }
 
-const Task = ({ title, task, tasks, setTasks, index }: TaskProps) => {
+const Task = ({ title, task, tasks, setTasks }: TaskProps) => {
   const [edit, setEdit] = useState<Boolean>(false);
   const [taskEdit, setTaskEdit] = useState<string>("");
 
@@ -44,6 +43,18 @@ const Task = ({ title, task, tasks, setTasks, index }: TaskProps) => {
       alert("It must contain a task!");
     }
   };
+
+  const handleCompleted = () => {
+    setTasks(
+      tasks.map((item) => {
+        if (item.id === task.id) {
+          item.completed = !item.completed;
+        }
+        return item;
+      })
+    );
+  };
+
   return (
     <div>
       {edit ? (
@@ -55,17 +66,12 @@ const Task = ({ title, task, tasks, setTasks, index }: TaskProps) => {
               onChange={handleEditChange}
               onBlur={handleSubmitEdit}
             />
-            <button onClick={handleEdit}>
-              <FaEdit />
-            </button>
-            <button onClick={handleDelete}>
-              <FaTrash />
-            </button>
           </li>
         </ul>
       ) : (
         <ul>
-          <li>
+          <li className={`${task.completed ? "completed" : ""}`}>
+            <input type="checkbox" onChange={handleCompleted} />
             {title}
             <button onClick={handleEdit}>
               <FaEdit />
