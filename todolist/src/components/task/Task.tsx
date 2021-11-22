@@ -2,6 +2,7 @@ import { FaTrashAlt, FaPencilAlt } from "react-icons/fa";
 import "./style.css";
 import { IMainProps } from "../main/Main";
 import { useState, ChangeEvent, SetStateAction, Dispatch } from "react";
+import swal from 'sweetalert';
 
 interface TaskProps {
   title: string;
@@ -15,7 +16,13 @@ const Task = ({ title, task, tasks, setTasks }: TaskProps) => {
   const [taskEdit, setTaskEdit] = useState<string>("");
 
   const handleDelete = (): void => {
-    setTasks(tasks.filter((item) => item !== task));
+    swal("Are you sure you want delete this task?", {
+      buttons: ["No", true],
+    }).then((result) => {
+        if (result) {
+          setTasks(tasks.filter((item) => item !== task))
+        }
+    })
   };
 
   const handleEditChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -55,6 +62,7 @@ const Task = ({ title, task, tasks, setTasks }: TaskProps) => {
     );
   };
 
+
   return (
     <div>
       {edit ? (
@@ -80,17 +88,30 @@ const Task = ({ title, task, tasks, setTasks }: TaskProps) => {
                 className="form-check-input me-3"
               />
               <label
-                className={`${task.completed ? "text-decoration-line-through" : ""}`}
+                className={`${
+                  task.completed ? "text-decoration-line-through" : ""
+                }`}
               >
                 {title}
               </label>
             </div>
 
             <div className="icons-container invisible">
-              <a href="#!" title="Edit todo" onClick={handleEdit} className="bg-transparent border-0 text-info me-3">
+              <a
+                href="#!"
+                title="Edit todo"
+                onClick={handleEdit}
+                className="bg-transparent border-0 text-info me-3"
+              >
                 <FaPencilAlt />
               </a>
-              <a href="#!" title="Delete todo" onClick={handleDelete} className="bg-transparent border-0 me-2 text-danger">
+              <a
+                href="#!"
+                title="Delete todo"
+                onClick={handleDelete}
+                className="bg-transparent border-0 me-2 text-danger"
+              >
+
                 <FaTrashAlt />
               </a>
             </div>

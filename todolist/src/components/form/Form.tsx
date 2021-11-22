@@ -1,6 +1,7 @@
 import { useState, ChangeEvent, FormEvent } from "react";
 import "./style.css";
 import { IMainProps } from "../main/Main";
+import swal from 'sweetalert';
 
 interface IFormProps {
   tasks: IMainProps[];
@@ -19,7 +20,7 @@ const Form = ({ tasks, setTasks }: IFormProps) => {
     input.trim().length !== 0 ? setTasks([
       { id: Math.random() * 10, text: input, completed: false },
       ...tasks,
-    ]) : alert("You Must Enter Task!")
+    ]) : swal("You Must Enter Task!")
     setInput("");
   };
 
