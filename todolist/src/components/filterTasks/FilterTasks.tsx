@@ -1,14 +1,13 @@
+import "./style.css";
 
 interface IFilterTasksProps {
-    tasksToShow: string;
-    handleTasksToShow: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  tasksToShow: string;
+  handleTasksToShow: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const FilterTasks = ({ tasksToShow, handleTasksToShow }: IFilterTasksProps) => {
-
-
   return (
-    <div>
+    <div className="mb-4">
       <span>
         <input
           type="radio"

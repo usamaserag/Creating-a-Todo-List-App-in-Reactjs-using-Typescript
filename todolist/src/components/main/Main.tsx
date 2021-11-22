@@ -43,12 +43,14 @@ const Main = () => {
   }, [tasks, tasksToShow]);
 
   return (
-    <div>
+    <div className="container p-5 rounded mx-auto bg-light shadow">
+      <h1 className="text-center mb-4 pb-3 text-primary"><u>My Task-s</u></h1>
+      <Form tasks={tasks} setTasks={setTasks} />
+      <hr className="my-4" />
       <FilterTasks
         tasksToShow={tasksToShow}
         handleTasksToShow={handleTasksToShow}
       />
-      <Form tasks={tasks} setTasks={setTasks} />
       <TasksList
         filteredTasks={filteredTasks}
         setTasks={setTasks}

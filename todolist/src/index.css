@@ -1,6 +1,10 @@
+body {
+  font-family: "Open Sans", sans-serif;
+  padding: 10px;
+}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: tahoma
+  font-family: tahoma;
 }
