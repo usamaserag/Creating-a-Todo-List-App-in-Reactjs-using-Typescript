@@ -86,7 +86,7 @@ const Task = ({ title, task, tasks, setTasks }: TaskProps) => {
               </label>
             </div>
 
-            <div className="icons-container">
+            <div className="icons-container invisible">
               <a href="#!" title="Edit todo" onClick={handleEdit} className="bg-transparent border-0 text-info me-3">
                 <FaPencilAlt />
               </a>

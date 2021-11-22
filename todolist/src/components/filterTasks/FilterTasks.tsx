@@ -8,7 +8,7 @@ interface IFilterTasksProps {
 const FilterTasks = ({ tasksToShow, handleTasksToShow }: IFilterTasksProps) => {
   return (
     <div className="mb-4">
-      <span>
+      <span className="filterTasks-btn">
         <input
           type="radio"
           id="all"
@@ -16,10 +16,18 @@ const FilterTasks = ({ tasksToShow, handleTasksToShow }: IFilterTasksProps) => {
           value="all"
           checked={tasksToShow === "all"}
           onChange={handleTasksToShow}
+          className="d-none"
         />
-        <label htmlFor="all">All</label>
+        <label
+          htmlFor="all"
+          className={`filterLabel ${
+            tasksToShow === "all" ? "filterLabel-active" : ""
+          }`}
+        >
+          ALL
+        </label>
       </span>
-      <span>
+      <span className="filterTasks-btn">
         <input
           type="radio"
           id="completed"
@@ -27,10 +35,18 @@ const FilterTasks = ({ tasksToShow, handleTasksToShow }: IFilterTasksProps) => {
           value="completed"
           checked={tasksToShow === "completed"}
           onChange={handleTasksToShow}
+          className="d-none"
         />
-        <label htmlFor="completed">Completed</label>
+        <label
+          htmlFor="completed"
+          className={`filterLabel ${
+            tasksToShow === "completed" ? "filterLabel-active" : ""
+          }`}
+        >
+          COMPLETED
+        </label>
       </span>
-      <span>
+      <span className="filterTasks-btn">
         <input
           type="radio"
           id="active"
@@ -38,8 +54,16 @@ const FilterTasks = ({ tasksToShow, handleTasksToShow }: IFilterTasksProps) => {
           value="active"
           checked={tasksToShow === "active"}
           onChange={handleTasksToShow}
+          className="d-none"
         />
-        <label htmlFor="active">Active</label>
+        <label
+          htmlFor="active"
+          className={`filterLabel ${
+            tasksToShow === "active" ? "filterLabel-active" : ""
+          }`}
+        >
+          ACTIVE
+        </label>
       </span>
     </div>
   );

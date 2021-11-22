@@ -1,5 +1,4 @@
 import { useState, ChangeEvent, useEffect } from "react";
-import "./style.css";
 import TasksList from "../tasksList/TasksList";
 import Form from "../form/Form";
 import FilterTasks from "../filterTasks/FilterTasks";

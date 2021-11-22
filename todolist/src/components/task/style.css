@@ -1,6 +1,3 @@
-.icons-container {
-    visibility: hidden;
-}
 .task:hover .icons-container {
-    visibility: visible;
+    visibility: visible !important;
 }
