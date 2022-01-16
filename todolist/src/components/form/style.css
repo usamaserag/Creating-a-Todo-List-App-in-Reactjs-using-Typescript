@@ -1,0 +1,6 @@
+.task-input:focus {
+    box-shadow: none !important;
+}
+.task-input::placeholder {
+    font-size: 14px !important;
+}

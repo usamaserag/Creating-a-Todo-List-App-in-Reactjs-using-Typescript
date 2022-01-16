@@ -1,4 +1,3 @@
-import "./style.css";
 import Task from "../task/Task";
 import { IMainProps } from "../main/Main";
 
@@ -6,8 +5,10 @@ interface TasksProps {
   tasks: IMainProps[];
   filteredTasks: IMainProps[];
   setTasks: React.Dispatch<React.SetStateAction<IMainProps[]>>;
+  emptyMessage: string;
 }
-const TasksList = ({ tasks, setTasks, filteredTasks }: TasksProps) => {
+const TasksList = ({ tasks, setTasks, filteredTasks, emptyMessage }: TasksProps) => {
+
   return (
     <div>
       {filteredTasks.length > 0 ? (
@@ -23,7 +24,7 @@ const TasksList = ({ tasks, setTasks, filteredTasks }: TasksProps) => {
           );
         })
       ) : (
-        <h5>There Is No Tasks To Show</h5>
+        <h6>{emptyMessage}</h6>
       )}
     </div>
   );
